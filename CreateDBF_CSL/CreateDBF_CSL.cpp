@@ -8,6 +8,7 @@
 #include <vector>
 #include <algorithm>
 #include "windows.h"
+#include "S_RegTool.hpp"
 
 
 #define split splitType1
@@ -46,6 +47,7 @@ int main(int argc, char* argv[])
         {  
             streamsize len = {};
             getline(excel, add_str);
+            //首个去除头标记
             if (first)
             {
                 add_str = add_str.substr(3);
@@ -53,7 +55,7 @@ int main(int argc, char* argv[])
             }
             if (add_str != "")
             {
-                string_replace(add_str, "\"", "");
+                add_str = rreplace(add_str, "\"", "");
 
                 auto sp = split(add_str, ",");
                 createField(sp, fields);
@@ -184,4 +186,9 @@ void string_replace(string& s1, const string& s2, const string& s3)
         s1.replace(pos, a, s3);
         pos += b;
     }
+}
+
+vector<string> getInfo(string str)
+{
+    auto ret = smatch()
 }
