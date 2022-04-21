@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+/.vs/CreateDBF_CSL
+/x64/Debug
+/CreateDBF_CSL/x64/Debug
