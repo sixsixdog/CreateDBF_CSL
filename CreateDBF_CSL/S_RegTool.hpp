@@ -4,12 +4,27 @@
 
 using namespace std;
 
-smatch rmatch(string str, string r)
+bool rmatch(string &str,smatch &matched, string r)
 {
-	smatch result;
 	regex regstr(r,regex::icase);
-	auto matched = regex_match(str, result, regstr);
-	return result;
+	return regex_match(str, matched, regstr);
+}
+bool rmatch(string& str, string r)
+{
+	regex regstr(r, regex::icase);
+	return regex_match(str, regstr);
+}
+
+bool rsearch(string &str,smatch &matched, string r)
+{
+	regex regstr(r,regex::icase);
+	return regex_search(str, matched, regstr);
+}
+
+bool rsearch(string& str, string r)
+{
+	regex regstr(r, regex::icase);
+	return regex_search(str, regstr);
 }
 
 string rreplace(string partern, string substr,string replace)
