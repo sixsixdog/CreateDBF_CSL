@@ -55,7 +55,7 @@ struct fieldDefinition
 typedef class C_DBF_OPS
 {
 public:
-    C_DBF_OPS(string output,vector<fieldDefinition> fields)
+    C_DBF_OPS(string output,vector<fieldDefinition> fields):h_dbf(nullptr)
     {
         //创建文件
         h_dbf = fopen(output.c_str(), "wb+");
@@ -99,11 +99,11 @@ public:
         fflush(h_dbf);
 
         
-    };
+    }
     ~C_DBF_OPS()
     {
         fclose(h_dbf);
-    };
+    }
 
 
 
