@@ -113,4 +113,37 @@ private:
     fileHeader m_FileHeader = {};
 }DBF;
 
+typedef class DBF_FIELDS
+{
+	string m_sFileName={};
+    string m_fieldType={};
+    int m_nLength = 0;
+    int m_nDecLength = 0;
+    DBF_FIELDS(string fieldName, string fieldType, int nLength, int decLength)
+	{
+        this->m_sFileName = fieldName;
+		this->m_nLength = nLength;
+		this->m_nDecLength = decLength;
+        if(fieldType == "Text")
+        {
+            this->m_fieldType = 'C';
+        }
+        else if (fieldType == "Number")
+        {
+            this->m_fieldType = 'N';
+        }
+        else if(fieldType == "Float")
+        {
+            this->m_fieldType = 'N';
+        }
+        else if(fieldType == "Numeric")
+        {
+            this->m_fieldType = 'N';
+        }else
+        {
+            this->m_fieldType = 'C';
+        }
+	}
+}field;
+
 #endif
