@@ -37,9 +37,6 @@ ostream &operator<<(ostream& o, fieldDefinition f)
 
 int main(int argc, char* argv[])
 {
-    //计算程序执行时间
-    clock_t run,start, finish;
-    run = clock();
     auto path = argv[1];
     //auto path = "C:/Users/MinGW/Desktop/DBF建表.csv";
     auto out = argv[2];
@@ -76,14 +73,9 @@ int main(int argc, char* argv[])
                     //获取字段信息
                     auto ret = getInfo(add_str);
 
-
-
-                    start = clock();
                     //根据字段信息创建字段
                     createField(ret, fields);
-                    finish = clock();
-                    auto times = finish - start;
-                    cout << times << endl;
+
                 }
             }
         }
@@ -94,7 +86,6 @@ int main(int argc, char* argv[])
     }
    //根据给定生成dbf文件
    DBF dbf(out,fields);
-   cout << long(run-finish) << endl;
 }
 
 void createField(vector<string> &info, vector<fieldDefinition> &fields)
